@@ -71,8 +71,8 @@ npm install -g newman-reporter-htmlextra
 ### Test Case Scenarios:
 
 #### 1️ Create New Booking
-**Request URL:** `https://restful-booker.herokuapp.com/booking/`  
-**Request Method:** `POST`
+**Request URL:** https://restful-booker.herokuapp.com/booking/  
+**Request Method:** POST
 
 **Pre-request Script:**
 ```javascript
@@ -135,8 +135,8 @@ pm.environment.set("additionalNeeds", additionalNeeds)
 ```
 ---
 #### 2 Get Booking Details By ID
-**Request URL:** `https://restful-booker.herokuapp.com/booking/bookingid`  
-**Request Method:** `GET`
+**Request URL:** https://restful-booker.herokuapp.com/booking/bookingid  
+**Request Method:** GET
 **Response Body:**
 ```json
 {
@@ -152,8 +152,8 @@ pm.environment.set("additionalNeeds", additionalNeeds)
 }
 ```
 #### 3 Create A Token For Authentication.
-**Request URL:** `https://restful-booker.herokuapp.com/auth`  
-**Request Method:** `POST`
+**Request URL:** https://restful-booker.herokuapp.com/auth  
+**Request Method:** POST
 **Pre-request Script:** `None`
 **Request Body:**
 ```json
@@ -169,8 +169,8 @@ pm.environment.set("additionalNeeds", additionalNeeds)
 }
 ```
 #### 4 Update the Booking Details
-**Request URL:** `https://restful-booker.herokuapp.com/booking/bookingid`  
-**Request Method:** `PUT`
+**Request URL:** https://restful-booker.herokuapp.com/booking/bookingid  
+**Request Method:** PUT
 
 **Pre-request Script:**
 ```javascript
@@ -234,8 +234,8 @@ pm.environment.set("additionalNeeds", additionalNeeds)
 ```
 #### 5 Delete Booking Record
 **Request URL:** https://restful-booker.herokuapp.com/booking/bookingid   
-**Request Method:** `DELETE`
-**Response Body:** `None`
+**Request Method:** DELETE
+**Response Body:** None
 ---
 ### 💡 Contribution
 Feel free to fork this repository and submit pull requests for improvements.
