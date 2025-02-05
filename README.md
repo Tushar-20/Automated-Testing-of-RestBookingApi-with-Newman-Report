@@ -70,7 +70,7 @@ npm install -g newman-reporter-htmlextra
 ## 📝 Testing
 ### Test Case Scenarios:
 
-#### 1️⃣ Create New Booking
+#### 1️ Create New Booking
 **Request URL:** `https://restful-booker.herokuapp.com/booking/`  
 **Request Method:** `POST`
 
@@ -134,6 +134,108 @@ pm.environment.set("additionalNeeds", additionalNeeds)
 }
 ```
 ---
+#### 2 Get Booking Details By ID
+**Request URL:** `https://restful-booker.herokuapp.com/booking/bookingid`  
+**Request Method:** `GET`
+**Response Body:**
+```json
+{
+   "firstname": "D'angelo",
+   "lastname": "Feeney",
+   "totalprice": 757,
+   "depositpaid": true,
+   "bookingdates": {
+       "checkin": "2024-03-15",
+       "checkout": "2024-03-20"
+   },
+   "additionalneeds": "hard drive"
+}
+```
+#### 3 Create A Token For Authentication.
+**Request URL:** `https://restful-booker.herokuapp.com/auth`  
+**Request Method:** `POST`
+**Pre-request Script:** `None`
+**Request Body:**
+```json
+{
+   "username": "admin",
+   "password": "password123"
+}
+```
+**Response Body:**
+```json
+{
+   "token": "06eb798bf6f2caa"
+}
+```
+#### 4 Update the Booking Details
+**Request URL:** `https://restful-booker.herokuapp.com/booking/bookingid`  
+**Request Method:** `PUT`
 
+**Pre-request Script:**
+```javascript
+    var firstName = pm.variables.replaceIn("{{$randomFirstName}}")
+    pm.environment.set("firstName", firstName)
+    console.log("First Name Value "+firstName)
+    
+    var lastName = pm.variables.replaceIn("{{$randomLastName}}")
+    pm.environment.set("lastName", lastName)
+    console.log("Last Name Value "+lastName)
+    
+    var totalPrice = pm.variables.replaceIn("{{$randomInt}}")
+    pm.environment.set("totalPrice", totalPrice)
+    console.log(totalPrice)
+    
+    var depositPaid = pm.variables.replaceIn("{{$randomBoolean}}")
+    pm.environment.set("depositPaid", depositPaid)
+    console.log(depositPaid)
+    
+    //Date
+    const moment = require('moment')
+    const today = moment()
+    pm.environment.set("checkin", today.add(1,'d').format("YYYY-MM-DD"))
+    pm.environment.set("checkout",today.add(5,'d').format("YYYY-MM-DD") )
+    
+    var additionalNeeds = pm.variables.replaceIn("{{$randomNoun}}")
+    pm.environment.set("additionalNeeds", additionalNeeds)
+```
+
+**Request Body:**
+```json
+ {
+     "firstname" : "{{firstName}}",
+     "lastname" : "{{lastName}}",
+     "totalprice" : {{totalPrice}},
+     "depositpaid" : {{depositPaid}},
+     "bookingdates" : {
+   	  "checkin" : "{{checkin}}",
+   	  "checkout" : "{{checkout}}"
+     },
+     "additionalneeds" : "{{additionalNeeds}}"
+ }
+```
+
+**Response Body:**
+```json
+ {
+     "bookingid": 4334,
+     "booking": {
+         "firstname": "Joelle",
+         "lastname": "Krajcik",
+         "totalprice": 266,
+         "depositpaid": true,
+         "bookingdates": {
+             "checkin": "2024-03-15",
+             "checkout": "2024-03-20"
+         },
+         "additionalneeds": "monitor"
+     }
+ }
+```
+#### 5 Delete Booking Record
+**Request URL:** `https://restful-booker.herokuapp.com/booking/bookingid`  
+**Request Method:** `DELETE`
+**Response Body:** `None`
+---
 ### 💡 Contribution
 Feel free to fork this repository and submit pull requests for improvements.
