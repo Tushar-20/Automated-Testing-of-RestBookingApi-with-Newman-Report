@@ -233,7 +233,7 @@ pm.environment.set("additionalNeeds", additionalNeeds)
  }
 ```
 #### 5 Delete Booking Record
-**Request URL:** `https://restful-booker.herokuapp.com/booking/bookingid`   
+**Request URL:** (https://restful-booker.herokuapp.com/booking/bookingid)   
 **Request Method:** `DELETE`
 **Response Body:** `None`
 ---
